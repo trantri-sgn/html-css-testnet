@@ -1,0 +1,36 @@
+:root {
+  --primary: #5e83ca;
+  --white: #ffffff;
+  --background-gradient: linear-gradient(180deg, rgba(27, 95, 104, 0.5) 0%, rgba(255, 255, 255, 0.5) 100%);
+  --shadow-sm: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0px 8px 8px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0px 20px 8px rgba(0, 0, 0, 0.1);
+
+  // text size
+  --text-xs: 18px;
+  --text-sm: 24px;
+  --text-md: 34px;
+  --text-lg: 36px;
+  --text-xl: 46px;
+  --text-2xl: 54px;
+  --text-3xl: 48px;
+  --text-4xl: 64px;
+
+  // others
+  --container: 1200px;
+  --border-radius: 10px;
+}
+
+@media all and (max-width: 600px) {
+  :root {
+    --text-2xs: 12px;
+    --text-xs: 14px;
+    --text-sm: 16px;
+    --text-md: 18px;
+    --text-lg: 20px;
+    --text-xl: 22px;
+    --text-2xl: 32px;
+    --text-3xl: 44px;
+    --text-4xl: 50px;
+  }
+}
