@@ -1,4 +1,4 @@
-@use '../mixin';
+@use '../mixin' as *;
 .main {
   position: relative;
   height: 100vh;
@@ -6,12 +6,16 @@
   justify-content: center;
   flex-direction: column;
   .video-container {
+    visibility: visible;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     overflow: hidden;
+    @include responsive(mobile) {
+      visibility: hidden;
+    }
     video {
       min-width: 100%;
       min-height: 100%;
@@ -21,6 +25,24 @@
       left: 50%;
       transform: translate(-50%, -50%);
       z-index: -1;
+    }
+  }
+  .slider-container {
+    visibility: hidden;
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    @include responsive(mobile) {
+      visibility: visible;
+    }
+    & .image {
+      width: 100%;
+      height: 100vh;
+      & > img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
     }
   }
   .logo {
@@ -43,6 +65,7 @@
       align-items: center;
       justify-content: center;
       span {
+        position: relative;
         display: inline-block;
         width: 40px;
         height: 40px;
@@ -50,6 +73,20 @@
         border: 1px solid rgba(160, 213, 255, 0.1);
         background: rgba(160, 213, 255, 0.1);
         box-shadow: 8px 14px 10px -4px rgba(0, 0, 0, 0.25);
+        overflow: hidden;
+        &:hover::before {
+          left: 0;
+        }
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 100%;
+          right: 0;
+          background-color: rgba(255, 255, 255, 0.3);
+          transition-duration: 0.3s;
+        }
         img {
           width: 100%;
           height: 100%;
@@ -59,14 +96,16 @@
     }
   }
   .context {
-    text-align: center;
-    flex-grow: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    width: 60%;
+    height: auto;
+    margin: 0 auto;
+    padding-bottom: 20px;
     .img-slogan {
       position: relative;
-      top: 100px;
+      top: 15%;
+    }
+    @include responsive(mobile) {
+      width: 80%;
     }
   }
   .btn-register {
@@ -104,6 +143,76 @@
     video {
       width: auto;
       height: 100%;
+    }
+  }
+}
+
+// Popup
+.overlay {
+  position: fixed;
+  inset: 0;
+  visibility: hidden;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 999;
+  @include center;
+  @include responsive(tablet) {
+    align-items: flex-start;
+  }
+  opacity: 0;
+  transition-duration: 0.3s;
+  &.active {
+    visibility: visible;
+    opacity: 1;
+  }
+  .login-form {
+    background: url('/assets/desktop-board.png');
+    background-size: cover;
+    width: 750px;
+    height: 360px;
+    @include responsive(tablet) {
+      width: 450px;
+      height: 500px;
+      background: url('/assets/mobile-board.png');
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+    .form {
+      height: 100%;
+      display: flex;
+      justify-content: end;
+      align-items: center;
+      flex-direction: column;
+      .wrapper {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        gap: 30px;
+        margin-bottom: 30px;
+        @include responsive(tablet) {
+          margin-bottom: 45px;
+        }
+        & > input {
+          background-color: rgba(0, 0, 0, 0.7);
+          padding: 10px 20px;
+          border-radius: 5px;
+          font-size: 18px;
+          color: var(--white);
+          font-weight: 600;
+          &::placeholder {
+            color: var(--primary);
+          }
+        }
+        & > button {
+          width: 200px;
+          margin: 0 auto;
+          @include responsive(tablet) {
+            width: 150px;
+          }
+          img {
+            width: 100%;
+          }
+        }
+      }
     }
   }
 }

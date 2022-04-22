@@ -11,8 +11,27 @@
     <section class="main">
       <div class="video-container">
         <video autoplay loop muted plays-inline>
-          <source src="./assets/TESTNET_landing_background_v001.mp4" type="video/mp4" />
+          <source
+            src="./assets/TESTNET_landing_background_v001.mp4"
+            type="video/mp4"
+          />
         </video>
+      </div>
+      <div class="slider-container">
+        <div class="swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="image">
+                <img src="assets/Testnet_Banner_414x680_1.png" alt="" />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="image">
+                <img src="assets/Testnet_Banner_414x680_2.png" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="logo">
         <img src="./assets/logo.png" alt="logo" width="200" />
@@ -44,11 +63,52 @@
         </a>
       </div>
       <div class="context">
-        <img src="./assets/slogan.png" alt="" class="img-slogan" />
-        <a href="#" class="btn-register">
-          <img src="./assets/btn-joinnow.png" alt="" />
-        </a>
+        <img
+          src="./assets/slogan.png"
+          alt=""
+          class="img-slogan"
+          draggable="false"
+        />
+        <button id="register">
+          <img
+            class="btn-register"
+            src="./assets/btn-joinnow.png"
+            alt=""
+            id="register"
+          />
+        </button>
       </div>
     </section>
+    <!-- Popup -->
+    <div class="overlay" id="overlay">
+      <div class="login-form">
+        <form class="form" id="form">
+          <div class="wrapper">
+            <input placeholder="Name" />
+            <input placeholder="Bep 20 Wallet Address" />
+            <button type="submit">
+              <img src="assets/btn-submit.png" width="200" />
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <script type="module" src="js/index.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
+    />
+
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    <script type="module">
+      const swiper = new Swiper('.swiper', {
+        loop: true,
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: false,
+        },
+        effect: 'fade',
+      });
+    </script>
   </body>
 </html>
